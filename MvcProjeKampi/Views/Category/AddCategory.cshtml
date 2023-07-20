@@ -1,0 +1,23 @@
+﻿@model EntityLayer.Concrete.Category
+@{
+    Layout = null;
+}
+
+<h1>Yeni Kategori</h1>
+
+@using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
+{
+
+    <div class="form-group"> 
+        @Html.Label("Kategori Adı")
+        @Html.TextBoxFor(p => p.CategoryName, new { @class = "Form-control" })
+        @Html.ValidationMessageFor(p => p.CategoryName) 
+        <br />
+        @Html.Label("Kategori Açıklama")
+        @Html.TextBoxFor(p => p.CategoryDescription, new { @class = "Form-control" })
+        @Html.ValidationMessageFor(p => p.CategoryDescription)
+        <br />
+        <button>kaydet</button>
+    </div>
+}
+

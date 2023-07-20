@@ -1,0 +1,37 @@
+﻿﻿@using EntityLayer.Concrete
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<a href="/AdminCategory/AddCategory" class="btn btn-outline-primary" style="float:right">Yeni Kategori Ekle</a>
+<br />
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>KATEGORİ ADI</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>#</td>
+            <td>@x.CategoryName</td>
+            <td><a href="/AdminCategory/DeleteCategory/@x.CategoryID" class="btn btn-danger">SİL</a></td>
+            <td><a href="/AdminCategory/EditCategory/@x.CategoryID" class="btn btn-warning">GÜNCELLE</a></td>
+        </tr>
+    }
+</table>
+@*@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<string>
+    { "page-link"}
+})*@
+
+
